@@ -1,0 +1,23 @@
+.header_container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 30px auto 30px;
+  padding: 4px 10px;
+  box-sizing: border-box;
+  align-items: center;
+
+  .menu_icon,
+  .rate {
+    text-align: center;
+  }
+
+  .rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu_icon {
+    cursor: pointer;
+  }
+}

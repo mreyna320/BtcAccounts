@@ -1,0 +1,19 @@
+<div style="padding: 4px 10px">
+  <mat-card>
+    <mat-card-content>
+      <ul class="common-breadcrumb-list">
+        <li class="common-breadcrumb-item">
+          <a routerLink="">Home</a>
+        </li>
+        <li
+          *ngFor="let item of breadcrumbs$ | async"
+          class="common-breadcrumb-item"
+        >
+          <a [routerLink]="item.url">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,15 @@
+.balance_field {
+  text-align: right;
+}
+
+.center_field {
+  text-align: center;
+}
+
+.clickeable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightpink;
+  }
+}

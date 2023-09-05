@@ -1,0 +1,32 @@
+:host {
+  .common-breadcrumb-list {
+    display: flex;
+    font-size: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .common-breadcrumb-item {
+      display: inline-flex;
+      align-items: center;
+
+      a,
+      span.content {
+        display: inline-flex;
+        align-items: center;
+        color: white;
+      }
+    }
+
+    .common-breadcrumb-item {
+      &:not(:first-child) {
+        &::before {
+          font-family: "Material Icons";
+          content: "\e5e1";
+          margin: 0 10px;
+          color: white;
+        }
+      }
+    }
+  }
+}

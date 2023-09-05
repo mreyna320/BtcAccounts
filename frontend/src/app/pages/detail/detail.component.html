@@ -1,0 +1,78 @@
+<ng-container *ngIf="account">
+  <mat-card class="accountDetails">
+    <mat-card-content>
+      <h4>{{ account.name }}</h4>
+      <h5>Treasury account</h5>
+      <h2>
+        <strong>{{ account.balance | number : "1.2-7" }} BTC</strong>
+        &nbsp; ($ {{ account.balance * exchangeRate | number : "1.2-2" }})
+      </h2>
+      <p>(Includes 0 BTC ($0.00) of unconfirmed funds)</p>
+      <h4>
+        Available balance: {{ account.balance | number : "1.2-7" }} BTC ($
+        {{ account.balance * exchangeRate | number : "1.2-2" }})
+      </h4>
+    </mat-card-content>
+  </mat-card>
+
+  <table mat-table [dataSource]="accountMovements" class="mat-elevation-z8">
+    <ng-container matColumnDef="confirmedDate">
+      <th mat-header-cell *matHeaderCellDef class="center_field">
+        Confirmed date
+      </th>
+      <td mat-cell *matCellDef="let element" class="center_field">
+        {{ element.confirmedDate | date }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderId">
+      <th mat-header-cell *matHeaderCellDef class="center_field">Order ID</th>
+      <td mat-cell *matCellDef="let element" class="center_field">
+        {{ element.orderId }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderCode">
+      <th mat-header-cell *matHeaderCellDef class="center_field">Order Code</th>
+      <td mat-cell *matCellDef="let element" class="center_field">
+        {{ element.orderCode }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="transactionType">
+      <th mat-header-cell *matHeaderCellDef class="center_field">
+        Transaction Type
+      </th>
+      <td mat-cell *matCellDef="let element" class="center_field">
+        {{ element.transactionType }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="debit">
+      <th mat-header-cell *matHeaderCellDef class="center_field">Debit</th>
+      <td mat-cell *matCellDef="let element" class="center_field">
+        {{ element.debit | number : "1.2-7" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="credit">
+      <th mat-header-cell *matHeaderCellDef class="center_field">Credit</th>
+      <td mat-cell *matCellDef="let element" class="center_field">
+        {{ element.credit | number : "1.2-7" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef class="balance_field">Balance</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="balance_field" [balanceHighlight]="element.balance">
+          BTC {{ element.balance | number : "1.2-7" }}<br />
+          $ {{ element.balance * exchangeRate | number : "1.2-2" }}
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</ng-container>

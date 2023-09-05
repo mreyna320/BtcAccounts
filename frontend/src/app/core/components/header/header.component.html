@@ -1,0 +1,22 @@
+<div class="header_container">
+  <div class="menu_icon" [matMenuTriggerFor]="routesMenu">
+    <mat-icon>menu</mat-icon>
+    <mat-menu #routesMenu="matMenu">
+      <a routerLink="accounts" mat-menu-item>
+        <mat-icon>list</mat-icon>
+        <span>Accounts</span>
+      </a>
+      <a mat-menu-item>
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Logout</span>
+      </a>
+    </mat-menu>
+  </div>
+
+  <div class="rate">
+    <mat-icon>currency_bitcoin</mat-icon> - $
+    {{ exchangeRate | number : "1.2-2" }}
+  </div>
+
+  <div class="menu_icon"><mat-icon>notification_important</mat-icon></div>
+</div>
