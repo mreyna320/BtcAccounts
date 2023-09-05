@@ -10,7 +10,7 @@ export class AccountsService {
   public get accountUpdate() {
     return this._accountUpdate.asObservable();
   }
-  private _accountUpdate = new Subject();
+  private _accountUpdate = new Subject<Account>();
 
   constructor() {
     setInterval(() => {
@@ -32,7 +32,7 @@ export class AccountsService {
     }, 40000);
   }
 
-  getAllAccounts(): Account[] {
+  findAllAccounts(): Account[] {
     return this.accounts.map(({ movements, ...account }) => account);
   }
 

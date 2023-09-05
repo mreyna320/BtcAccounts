@@ -7,7 +7,6 @@ import {
 } from '@nestjs/common';
 import { Account } from './accounts.model';
 import { AccountsService } from './accounts.service';
-// import { getAccountParamsDTO } from './dtos/get-accounts-params.dto';
 
 @Controller('api/accounts')
 export class AccountsController {
@@ -16,7 +15,7 @@ export class AccountsController {
   @Get()
   findAll(): Account[] {
     try {
-      return this.accountsService.getAllAccounts();
+      return this.accountsService.findAllAccounts();
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -24,6 +23,10 @@ export class AccountsController {
 
   @Get(':id')
   getAccountById(@Param('id') id: string): Account {
-    return this.accountsService.getAccountBy(id);
+    try {
+      return this.accountsService.getAccountBy(id);
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 }

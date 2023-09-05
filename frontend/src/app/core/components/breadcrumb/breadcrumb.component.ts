@@ -12,14 +12,9 @@ import { Breadcrumb, BreadcrumbService } from './breadcrumb.service';
 export class BreadcrumbComponent implements OnInit {
   breadcrumbs$!: Observable<Breadcrumb[]>;
 
-  constructor(
-    private router: Router,
-    private breadcrumbsService: BreadcrumbService
-  ) {}
+  constructor(private breadcrumbsService: BreadcrumbService) {}
 
   ngOnInit(): void {
     this.breadcrumbs$ = this.breadcrumbsService.getCrumbs();
   }
-
-  async navigateTo(breadcrumb: Breadcrumb) {}
 }
